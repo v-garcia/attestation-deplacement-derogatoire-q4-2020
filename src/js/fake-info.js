@@ -1,4 +1,4 @@
-export async function fakeHomeAddress({ lat, long }) {
+export async function fakeHomeAddress ({ lat, long }) {
   console.log(`Run fakeHomeAddress with coordinate lat:${lat}, long:${long}`)
 
   const response = await fetch(
@@ -7,5 +7,3 @@ export async function fakeHomeAddress({ lat, long }) {
   const result = await response.json()
   return result
 }
-
-

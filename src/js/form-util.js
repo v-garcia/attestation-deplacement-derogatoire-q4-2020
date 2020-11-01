@@ -5,7 +5,6 @@ import { generatePdf } from './pdf-util'
 import { fakeHomeAddress } from './fake-info'
 import dateSub from 'date-fns/sub'
 import dateFormat from 'date-fns/format'
-import { closePath } from 'pdf-lib'
 
 window.dateSub = dateSub
 window.dateFormat = dateFormat
@@ -39,7 +38,7 @@ const conditions = {
   },
 }
 
-function validateAriaFields() {
+function validateAriaFields () {
   return Object.keys(conditions)
     .map((field) => {
       const fieldData = conditions[field]
@@ -59,7 +58,7 @@ function validateAriaFields() {
     .includes(true)
 }
 
-function setLeavingFields() {
+function setLeavingFields () {
   const leavingDate = dateSub(new Date(), { minutes: 20 })
 
   const leavingTime = dateFormat(leavingDate, 'HH:mm')
@@ -67,18 +66,18 @@ function setLeavingFields() {
   document.getElementById('field-heuresortie').value = leavingTime
 }
 
-function setHomeAddress(address) {
+function setHomeAddress (address) {
   for (const [key, value] of Object.entries(address)) {
     document.getElementById(`field-${key}`).value = value
   }
 }
 
-export function setReleaseDateTime(releaseDateInput) {
+export function setReleaseDateTime (releaseDateInput) {
   const loadedDate = new Date()
   releaseDateInput.value = getFormattedDate(loadedDate)
 }
 
-export function getProfile(formInputs) {
+export function getProfile (formInputs) {
   const fields = {}
   for (const field of formInputs) {
     let value = field.value
@@ -91,7 +90,7 @@ export function getProfile(formInputs) {
   return fields
 }
 
-export function getReasons(reasonInputs) {
+export function getReasons (reasonInputs) {
   const reasons = reasonInputs
     .filter((input) => input.checked)
     .map((input) => input.value)
@@ -99,7 +98,7 @@ export function getReasons(reasonInputs) {
   return reasons
 }
 
-function getCurrentPosition() {
+function getCurrentPosition () {
   if (navigator.geolocation) {
     return new Promise(function (resolve, reject) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -115,7 +114,7 @@ function getCurrentPosition() {
   }
 }
 
-export function prepareInputs(
+export function prepareInputs (
   formInputs,
   reasonInputs,
   reasonFieldset,
@@ -171,7 +170,10 @@ export function prepareInputs(
   })
 
   $('#fake-field-btn').addEventListener('click', async (event) => {
-    const setLoading = loading => document.getElementById('fake-field-btn').classList[loading ? 'add' : 'remove']('loading');
+    const setLoading = (loading) =>
+      document
+        .getElementById('fake-field-btn')
+        .classList[loading ? 'add' : 'remove']('loading')
     setLoading(true)
 
     try {
@@ -223,7 +225,7 @@ export function prepareInputs(
   })
 }
 
-export function prepareForm() {
+export function prepareForm () {
   const formInputs = $$('#form-profile input')
   const snackbar = $('#snackbar')
   const reasonInputs = [...$$('input[name="field-reason"]')]
