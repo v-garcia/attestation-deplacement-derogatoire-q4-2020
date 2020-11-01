@@ -6,8 +6,6 @@ import { fakeHomeAddress } from './fake-info'
 import dateSub from 'date-fns/sub'
 import dateFormat from 'date-fns/format'
 
-window.dateSub = dateSub
-window.dateFormat = dateFormat
 const conditions = {
   '#field-firstname': {
     length: 1,
