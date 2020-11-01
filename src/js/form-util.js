@@ -7,8 +7,6 @@ import dateSub from 'date-fns/sub'
 import dateFormat from 'date-fns/format'
 import { closePath } from 'pdf-lib'
 
-window.dateSub = dateSub
-window.dateFormat = dateFormat
 const conditions = {
   '#field-firstname': {
     length: 1,
