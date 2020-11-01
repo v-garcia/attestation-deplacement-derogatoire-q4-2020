@@ -352,6 +352,19 @@ input[type=number] {
   border-radius: 0.5em;
 }
 
+.btn-attestation:not(.loading) > .load-text {
+  display: none;
+}
+
+.btn-attestation.loading > *:not(.load-text) {
+  display: none;
+}
+
+.btn-attestation.loading {
+  opacity: 0.65; 
+  cursor: not-allowed !important;
+}
+
 .btn-attestation:hover {
   background-color: #3031C1;
 }

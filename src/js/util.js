@@ -33,3 +33,15 @@ export function addVersion (version) {
     'version',
   ).innerHTML = `${new Date().getFullYear()} - ${version}`
 }
+
+export function pick (data, keys) {
+  const result = {}
+
+  keys.forEach(function (key) {
+    if (Object.prototype.hasOwnProperty.call(data, key)) {
+      result[key] = data[key]
+    }
+  })
+
+  return result
+}
