@@ -5,7 +5,6 @@ import { generatePdf } from './pdf-util'
 import { fakeHomeAddress } from './fake-info'
 import dateSub from 'date-fns/sub'
 import dateFormat from 'date-fns/format'
-import { closePath } from 'pdf-lib'
 
 const conditions = {
   '#field-firstname': {
