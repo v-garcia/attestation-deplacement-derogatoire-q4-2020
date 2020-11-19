@@ -1,5 +1,6 @@
 import { generateQR } from './util'
 import { PDFDocument, StandardFonts } from 'pdf-lib'
+import parseDate from 'date-fns/parse'
 
 const ys = {
   travail: 578,
@@ -14,7 +15,7 @@ const ys = {
 }
 
 export async function generatePdf (profile, reasons, pdfBase) {
-  const creationInstant = new Date()
+  const creationInstant = parseDate(`${profile.datesortie} ${profile.creationHour}`, 'dd/MM/yyyy HH:mm', new Date())
   const creationDate = creationInstant.toLocaleDateString('fr-FR')
   const creationHour = creationInstant
     .toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })
